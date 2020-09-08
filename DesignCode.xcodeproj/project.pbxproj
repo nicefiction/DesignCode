@@ -56,10 +56,10 @@
 		091916152506C002007A0309 /* DesignCode */ = {
 			isa = PBXGroup;
 			children = (
+				0919161C2506C009007A0309 /* Assets.xcassets */,
 				091916162506C002007A0309 /* AppDelegate.swift */,
 				091916182506C002007A0309 /* SceneDelegate.swift */,
 				0919161A2506C002007A0309 /* ContentView.swift */,
-				0919161C2506C009007A0309 /* Assets.xcassets */,
 				091916212506C009007A0309 /* LaunchScreen.storyboard */,
 				091916242506C009007A0309 /* Info.plist */,
 				0919161E2506C009007A0309 /* Preview Content */,
