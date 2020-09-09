@@ -11,6 +11,13 @@ import SwiftUI
 
 struct ContentView: View {
     
+     // ////////////////////////
+    //  MARK: PROPERTY WRAPPERS
+    
+    @State private var isShowing: Bool = false
+    
+    
+    
      // //////////////////////////
     //  MARK: COMPUTED PROPERTIES
     
@@ -18,42 +25,49 @@ struct ContentView: View {
         
         ZStack {
             TitleView()
-                .blur(radius : 20.0)
+                .blur(radius : isShowing ? 20.0 : 0.0)
+                .animation(Animation.default)
 
             
             BackCardView()
-                .background(Color("card4"))
+                .background(isShowing ? Color("card3") : Color("card4"))
                 .cornerRadius(20.0)
                 .shadow(radius: 20.0)
-                .offset(x : 0.0 , y : -40.0)
+                .offset(x : 0.0 , y : isShowing ? -400.0 : -40.0)
                 .scaleEffect(0.9)
-                .rotationEffect(Angle(degrees : 10.00))
+                .rotationEffect(Angle(degrees : isShowing ? 0.00 : 10.00))
                 .rotation3DEffect(Angle(degrees : 10.00) ,
                                   axis : (x : 10 ,
                                           y : 0 ,
                                           z : 0))
                 .blendMode(.hardLight)
+                .animation(Animation.easeInOut(duration : 0.50))
             
             
             BackCardView()
-                .background(Color("card3"))
+                .background(isShowing ? Color("card4") : Color("card3"))
                 .cornerRadius(20.0)
                 .shadow(radius: 20.0)
-                .offset(x : 0.0 , y : -20.0)
+                .offset(x : 0.0 , y : isShowing ? -200.0 : -20.0)
                 .scaleEffect(0.95)
-                .rotationEffect(Angle(degrees : 5.00))
+                .rotationEffect(Angle(degrees : isShowing ? 0.00 : 5.00))
                 .rotation3DEffect(Angle(degrees : 5.00) ,
                                   axis : (x : 10 ,
                                           y : 0 ,
                                           z : 0))
                 .blendMode(BlendMode.hardLight)
+                .animation(Animation.easeInOut(duration: 0.30))
             
             
             CardView()
+                .onTapGesture {
+                    self.isShowing.toggle()
+            }
             
             
             BottomCardView()
-                .blur(radius : 20.0)
+                .blur(radius : isShowing ? 20.0 : 0.0)
+                .animation(Animation.default)
             
             
         } // ZStack {}
